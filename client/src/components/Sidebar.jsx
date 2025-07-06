@@ -19,6 +19,10 @@ const Sidebar = ({selectedUser, setSelectedUser}) => {
                     </div>
                 </div>
             </div>
+            <div className='bg-[#282142] rounded-full flex items-center gap-2 py-3 px-4 mt-5'>
+                <img src={assets.search_icon} alt="" className='w-3'/>
+                <input type="text" className='bg-transparent border-none outline-none text-white text-xs placehoder-[#c8c8c8] flex-1'placeholder='Search user'/>
+            </div>
         </div>
     </div>
   )
