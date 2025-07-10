@@ -22,9 +22,33 @@ const LoginPage = () => {
         {currState}
         <img src={assets.arrow_icon} alt="" className='w-5 cursor-pointer'/>
       </h2>
-      {currState === "Sign up" && (
-        <input type="text" className='p-2 border border-gray-500 rounded-md focus:outline-none' placeholder='Full Name' required />
+      {currState === "Sign up" && !isDataSubmitted && (
+        <input onChange={(e)=>setfullName(e.target.value)} value={fullName} type="text" className='p-2 border border-gray-500 rounded-md focus:outline-none' placeholder='Full Name' required />
       )}
+
+      {!isDataSubmitted && (
+        <>
+        <input onChange={(e)=>setEmail(e.target.value)} value={email} type="email" placeholder='Email Address' required className='p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500' />
+
+        <input onChange={(e)=>setPassword(e.target.value)} value={password} type="password" placeholder='Password' required className='p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500' />
+
+        </>
+      )}     
+
+      {currState === "Sign up" && isDataSubmitted && (
+        <textarea  onChange={(e)=>setBio(e.target.value)} value={bio} rows={4} className='p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500' placeholder='provide a short bio...' required></textarea>
+       )
+      }
+
+      <button type='submit' className='py-3 bg-gradient-to-r from-purple-400 to-violet-600 text-white rounded-md cursor-pointer'>
+        {currState === "Sign up" ? "Create Account" : "Login Now"}
+      </button>
+
+      <div className='flex items-center gap-2 text-sm text-gray-500'>
+        <input type='checkbox'/>
+        <p>Agree to the terms of use and privacy policy.</p>
+      </div>
+
       </form>
 
     </div>
