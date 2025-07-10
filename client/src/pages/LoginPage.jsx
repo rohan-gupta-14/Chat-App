@@ -4,7 +4,11 @@ import assets from '../assets/assets'
 const LoginPage = () => {
 
   const [currState, setCurrSate] = useState("Sign up")
-
+  const [fullName, setfullName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [bio, setBio] = useState("")
+  const [isDataSubmitted, setIsDataSubmitted] = useState(false)
   return (
     <div className='min-h-screen bg-cover bg-center flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col backdrop-blur-2xl'>
 
@@ -18,7 +22,9 @@ const LoginPage = () => {
         {currState}
         <img src={assets.arrow_icon} alt="" className='w-5 cursor-pointer'/>
       </h2>
-      
+      {currState === "Sign up" && (
+        <input type="text" className='p-2 border border-gray-500 rounded-md focus:outline-none' placeholder='Full Name' required />
+      )}
       </form>
 
     </div>
