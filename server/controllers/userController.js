@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 
 export const signup = async (req,res)=>{
-    const {fullName || email || password || bio} = req.body;
+    const {fullName, email, password, bio} = req.body;
 
     try {
         if(!fullName || !email || !password || !bio){
