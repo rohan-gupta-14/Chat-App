@@ -29,3 +29,22 @@ export const signup = async (req,res)=>{
     }
 }
 
+export const login = async (req,res)=>{
+    try {
+        const {email, password} = req.body;
+        const userData = await User.findOne({email})
+
+        const isPasswordCorrect = await bcrypt.compare(process, userData.password);
+
+        if (!isPasswordCorrect){
+            return res.json({success: false, message: "Invalid credentials"});
+        }
+
+        const token = generateToken(newUser._id)
+        res.json({success: true, userData, token, message: "Login successfully"})
+
+    } catch (error) {
+        console.log(error.message);
+        res.json({success: false,  message: error.message})
+    }
+}
