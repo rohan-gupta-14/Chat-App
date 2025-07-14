@@ -34,7 +34,7 @@ export const login = async (req,res)=>{
         const {email, password} = req.body;
         const userData = await User.findOne({email})
 
-        const isPasswordCorrect = await bcrypt.compare(process, userData.password);
+        const isPasswordCorrect = await bcrypt.compare(password, userData.password);
 
         if (!isPasswordCorrect){
             return res.json({success: false, message: "Invalid credentials"});
@@ -48,3 +48,4 @@ export const login = async (req,res)=>{
         res.json({success: false,  message: error.message})
     }
 }
+
