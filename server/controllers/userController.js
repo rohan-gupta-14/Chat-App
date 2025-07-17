@@ -49,3 +49,6 @@ export const login = async (req,res)=>{
     }
 }
 
+ export const checkAuth = (req,res)=>{
+    res.json({success: true, user: req.user});
+ }
